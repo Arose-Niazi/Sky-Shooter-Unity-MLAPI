@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using SWNetwork;
 
 [RequireComponent (typeof(Rigidbody2D))]
 [RequireComponent (typeof(HealthScript))]
@@ -12,6 +13,8 @@ public class PlayerScript : MonoBehaviour
 	private WeaponScript _weapon;
 	private HealthScript _playerHealth;
 	private Camera _camera;
+
+	private NetworkID _networkID;
 	
 	private void Awake()
 	{
@@ -19,29 +22,31 @@ public class PlayerScript : MonoBehaviour
 		_weapon = GetComponent<WeaponScript>();
 		_playerHealth = GetComponent<HealthScript>();
 		_camera = Camera.main;
+		_networkID = GetComponent<NetworkID>();
 	}
 
 	void Update()
 	{
-		float inputX = Input.GetAxis("Horizontal");
-		float inputY = Input.GetAxis("Vertical");
-		
-		_movement = new Vector2(
-			speed.x * inputX,
-			speed.y * inputY);
-		
-		bool shoot = Input.GetButtonDown("Fire1");
-		shoot |= Input.GetButtonDown("Fire2");
-		// Careful: For Mac users, ctrl + arrow is a bad idea
-
-		if (shoot)
+		if (_networkID.IsMine)
 		{
-			
-			if (_weapon != null)
+			float inputX = Input.GetAxis("Horizontal");
+			float inputY = Input.GetAxis("Vertical");
+		
+			_movement = new Vector2(
+				speed.x * inputX,
+				speed.y * inputY);
+		
+			bool shoot = Input.GetButtonDown("Fire1");
+			shoot |= Input.GetButtonDown("Fire2");
+			if (shoot)
 			{
-				// false because the player is not an enemy
-				_weapon.Attack(false);
-				SoundEffectsHelper.Instance.MakePlayerShotSound();
+
+				if (_weapon != null)
+				{
+					// false because the player is not an enemy
+					_weapon.Attack(false);
+					SoundEffectsHelper.Instance.MakePlayerShotSound();
+				}
 			}
 		}
 
