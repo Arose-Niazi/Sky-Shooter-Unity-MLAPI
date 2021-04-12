@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Background
+  - Shot
+  - Enemy
+  - SpawnPoints
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Background
+  - Middleground
+  - Foreground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 3801945491
+    locked: 0
+  - name: Platforms
+    uniqueID: 164105679
+    locked: 0
+  - name: Enemies
+    uniqueID: 1751571869
+    locked: 0
+  - name: Bullets
+    uniqueID: 2954387531
+    locked: 0
+  - name: Players
+    uniqueID: 1052771579
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
