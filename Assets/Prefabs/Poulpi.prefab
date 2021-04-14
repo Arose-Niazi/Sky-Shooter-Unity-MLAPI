@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3062917109925377904}
   - component: {fileID: 3062917109925377907}
   - component: {fileID: 9192322860674444294}
+  - component: {fileID: 6456404197533840463}
   m_Layer: 10
   m_Name: Poulpi
   m_TagString: Enemy
@@ -173,3 +174,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c65629532f5fa8438cdba2dc05dc966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6456404197533840463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3062917109925377909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkInstanceId: 0
+  PrefabHash: 11443909678865468356
+  PrefabHashGenerator: Poulpi
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0

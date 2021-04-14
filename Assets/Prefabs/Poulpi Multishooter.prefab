@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 8205301379286767418}
   - component: {fileID: 8205301379286767417}
   - component: {fileID: 8416479322090307562}
+  - component: {fileID: 5784099191668356771}
   m_Layer: 10
   m_Name: Poulpi Multishooter
   m_TagString: Enemy
@@ -221,6 +222,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c65629532f5fa8438cdba2dc05dc966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5784099191668356771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8205301379286767423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkInstanceId: 0
+  PrefabHash: 14802701801444908057
+  PrefabHashGenerator: Poulpi Multishooter
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
 --- !u!1 &8698200319948489558
 GameObject:
   m_ObjectHideFlags: 0
