@@ -11,7 +11,6 @@ public class PositionHandler : NetworkBehaviour
     });
     private void Start()
     {
-        Debug.Log("Pos is" + transform.position);
         if(IsOwner)
             position.Value = transform.position;
     }
