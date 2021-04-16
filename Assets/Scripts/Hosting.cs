@@ -1,31 +1,37 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using MLAPI;
+using MLAPI.Messaging;
 using UnityEngine.SceneManagement;
 
-public class Hosting : MonoBehaviour
+public class Hosting : NetworkBehaviour
 {
 
     public Transform spaceShip;
-    public float spaceShipXOff;
     public GameObject startButton;
     public Transform mainPanel;
 
-    private Transform _spaceShip;
-    
-    
+    private GameObject _ship;
+
     private void Start()
     {
+        NetworkManager.Singleton.OnClientDisconnectCallback -= HandleClientDisconnect;
         Debug.Log("Start Function");
-        NetworkManager.Singleton.OnServerStarted += HandleServerStarted;
-        NetworkManager.Singleton.OnClientConnectedCallback += HandleClientConnected;
-        NetworkManager.Singleton.OnClientDisconnectCallback += HandleClientDisconnect;
+        SpawnMeServerRpc(NetworkManager.Singleton.LocalClientId);
 
-        HandleServerStarted();
-        HandleClientConnected(NetworkManager.Singleton.ServerClientId);
-
+        if (IsHost)
+        {
+            startButton.SetActive(true);
+        }
+        
+    }
+    
+    private void OnDestroy()
+    {
+        // Prevent error in the editor
+        if (NetworkManager.Singleton == null) { return; }
+        
+        NetworkManager.Singleton.OnClientDisconnectCallback -= HandleClientDisconnect;
     }
     
     public void Leave()
@@ -42,49 +48,33 @@ public class Hosting : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
     
-    private void OnDestroy()
+    [ServerRpc(RequireOwnership = false)]
+    private void SpawnMeServerRpc(ulong clientId)
     {
-        // Prevent error in the editor
-        if (NetworkManager.Singleton == null) { return; }
-
-        NetworkManager.Singleton.OnServerStarted -= HandleServerStarted;
-        NetworkManager.Singleton.OnClientConnectedCallback -= HandleClientConnected;
-        NetworkManager.Singleton.OnClientDisconnectCallback -= HandleClientDisconnect;
-    }
-    
-    private void HandleServerStarted()
-    {
-        Debug.Log("Handle Server Started");
-        // Temporary workaround to treat host as client
-        if (NetworkManager.Singleton.IsHost)
-        {
-            startButton.SetActive(true);
-        }
-    }
-
-    private void HandleClientConnected(ulong clientId)
-    {
-        Debug.Log("Handle Client Connected");
-        // Are we the client that is connecting?
-        if (NetworkManager.Singleton.IsHost)
-        {
-            float x = -515 + 280 * (NetworkManager.Singleton.ConnectedClients.Count - 1); 
-            _spaceShip = Instantiate(spaceShip, 
-                new Vector3(x, 50), 
-                spaceShip.rotation);
-            _spaceShip.SetParent(mainPanel, false);
-            _spaceShip.GetComponent<NetworkObject>().Spawn();
-        }
+        Debug.Log("Spawn Me Server");
+        float x = -515 + 280 * (NetworkManager.Singleton.ConnectedClients.Count - 1);
+        _ship = Instantiate(spaceShip, new Vector3(x, 50, 0), Quaternion.identity).gameObject;
+        _ship.GetComponent<NetworkObject>().SpawnWithOwnership(clientId, null, true);
     }
 
     private void HandleClientDisconnect(ulong clientId)
     {
-        Debug.Log("Handle Client Disconnect");
-        // Are we the client that is disconnecting?
-        if (clientId == NetworkManager.Singleton.LocalClientId)
+        DestroyMeServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void DestroyMeServerRpc()
+    {
+        _ship.GetComponent<NetworkObject>().Despawn();
+    }
+    
+    [ClientRpc]
+    private void DestroyMeClientRpc()
+    {
+        if (IsOwner)
         {
-            _spaceShip.GetComponent<NetworkObject>().Despawn();
-            Destroy(_spaceShip);
+            _ship.GetComponent<NetworkObject>().Despawn();
         }
     }
 }
+ 

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6106843812401874337}
   - component: {fileID: 6683587664205219968}
   - component: {fileID: -7678026097700044058}
+  - component: {fileID: 5334476432270768634}
+  - component: {fileID: 9096038700158330969}
   m_Layer: 5
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -92,3 +94,30 @@ MonoBehaviour:
   PrefabHashGenerator: SpaceShip
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
+--- !u!114 &5334476432270768634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4364835364032195091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da95e8176c83034895e30f79ef6f564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9096038700158330969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4364835364032195091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e418b8897cf8c499b9680aa6c925aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  position:
+    m_InternalValue: {x: 0, y: 0, z: 0}

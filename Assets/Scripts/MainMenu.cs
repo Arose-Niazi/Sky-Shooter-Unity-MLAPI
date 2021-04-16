@@ -19,14 +19,12 @@ public class MainMenu : MonoBehaviour
     public void Host()
     {
         NetworkManager.Singleton.StartHost();
-        SceneManager.LoadScene("Hosting");
+        //SceneManager.LoadScene("Hosting");
     }
     
     public void Client()
     {
         NetworkManager.Singleton.StartClient();
-        if(NetworkManager.Singleton.IsListening)
-            SceneManager.LoadScene("Hosting");
     }
 
 }
