@@ -14,6 +14,13 @@ public class ConnectionHandle : NetworkBehaviour
         NetworkManager.Singleton.OnServerStarted += HandleServerStarted;
         NetworkManager.Singleton.OnClientConnectedCallback += HandleClientConnected;
         NetworkManager.Singleton.OnClientDisconnectCallback += HandleClientDisconnect;
+
+
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            if(IsServer)
+                NetworkManager.StopHost();
+        }
     }
     
     private void NetworkSceneManagerOnOnSceneSwitched()
