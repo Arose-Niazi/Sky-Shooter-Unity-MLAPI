@@ -6,7 +6,7 @@ public class PositionHandler : NetworkBehaviour
 {
     public NetworkVariableVector3 position = new NetworkVariableVector3(new NetworkVariableSettings
     {
-        WritePermission = NetworkVariablePermission.OwnerOnly,
+        WritePermission = NetworkVariablePermission.Everyone,
         ReadPermission = NetworkVariablePermission.Everyone
     });
     private void Start()

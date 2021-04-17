@@ -15,21 +15,13 @@ public class Hosting : NetworkBehaviour
 
     private void Start()
     {
-        NetworkManager.Singleton.OnClientDisconnectCallback -= HandleClientDisconnect;
         SpawnMeServerRpc(NetworkManager.Singleton.LocalClientId);
         if (IsHost)
         {
             startButton.SetActive(true);
         }
     }
-    
-    private void OnDestroy()
-    {
-        if (NetworkManager.Singleton == null) { return; }
-        
-        NetworkManager.Singleton.OnClientDisconnectCallback -= HandleClientDisconnect;
-    }
-    
+
     public void Leave()
     {
         DestroyMeServerRpc();
@@ -44,19 +36,15 @@ public class Hosting : NetworkBehaviour
         SceneManager.LoadScene("MainMenu");
     }
     
+    
     [ServerRpc(RequireOwnership = false)]
     private void SpawnMeServerRpc(ulong clientId)
     {
-        float x = -515 + 280 * (NetworkManager.Singleton.ConnectedClients.Count - 1);
+        float x = -515 + 280 * ((clientId>0)?(int)clientId-1:0);
         _ship = Instantiate(spaceShip, new Vector3(x, 50, 0), Quaternion.identity).gameObject;
         _ship.GetComponent<NetworkObject>().SpawnWithOwnership(clientId, null, true);
     }
-
-    private void HandleClientDisconnect(ulong clientId)
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
+    
     [ServerRpc(RequireOwnership = false)]
     private void DestroyMeServerRpc()
     {
@@ -67,6 +55,7 @@ public class Hosting : NetworkBehaviour
     {
         if(!IsClient) SceneManager.LoadScene("MainMenu");
     }
+    
     
 }
  

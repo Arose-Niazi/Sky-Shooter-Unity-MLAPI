@@ -338,6 +338,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConnectionHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 6770091643849416579, guid: a832df6ab4bc8ed439ce52d64db0eace,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainScriptOfScene
+      objectReference: {fileID: 0}
     - target: {fileID: 6770091643849416636, guid: a832df6ab4bc8ed439ce52d64db0eace,
         type: 3}
       propertyPath: m_RootOrder
