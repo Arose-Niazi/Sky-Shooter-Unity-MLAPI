@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8965529627575449184}
   - component: {fileID: 6931550471945267343}
-  - component: {fileID: 1582130847102864952}
+  - component: {fileID: 532650845100960699}
   m_Layer: 10
   m_Name: Weapon 2
   m_TagString: Untagged
@@ -47,7 +47,7 @@ MonoBehaviour:
   shotPrefab: {fileID: 3608163793746820342, guid: 5f72a197b91a83d4daaf286cee7c0176,
     type: 3}
   shootingRate: 1
---- !u!114 &1582130847102864952
+--- !u!114 &532650845100960699
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,11 +56,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 4924922041619742410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6e418b8897cf8c499b9680aa6c925aa, type: 3}
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position:
-    m_InternalValue: {x: 0, y: 0, z: 0}
+  FixedSendsPerSecond: 60
+  AssumeSyncedSends: 1
+  InterpolatePosition: 1
+  SnapDistance: 10
+  InterpolateServer: 1
+  MinMeters: 0.15
+  MinDegrees: 1.5
+  ExtrapolatePosition: 0
+  MaxSendsToExtrapolate: 5
+  Channel: 
+  EnableRange: 0
+  EnableNonProvokedResendChecks: 0
+  DistanceSendrate:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 20
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 500
+      value: 20
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8205301379286767423
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2785798154711301764}
   - component: {fileID: 2133317993868816234}
-  - component: {fileID: 8187123466071244713}
+  - component: {fileID: 4185108423966782857}
   m_Layer: 10
   m_Name: Weapon
   m_TagString: Untagged
@@ -351,7 +385,7 @@ MonoBehaviour:
   shotPrefab: {fileID: 3608163793746820342, guid: 5f72a197b91a83d4daaf286cee7c0176,
     type: 3}
   shootingRate: 1
---- !u!114 &8187123466071244713
+--- !u!114 &4185108423966782857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -360,8 +394,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 8698200319948489558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6e418b8897cf8c499b9680aa6c925aa, type: 3}
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position:
-    m_InternalValue: {x: 0, y: 0, z: 0}
+  FixedSendsPerSecond: 60
+  AssumeSyncedSends: 1
+  InterpolatePosition: 1
+  SnapDistance: 10
+  InterpolateServer: 1
+  MinMeters: 0.15
+  MinDegrees: 1.5
+  ExtrapolatePosition: 0
+  MaxSendsToExtrapolate: 5
+  Channel: 
+  EnableRange: 0
+  EnableNonProvokedResendChecks: 0
+  DistanceSendrate:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 20
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 500
+      value: 20
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
