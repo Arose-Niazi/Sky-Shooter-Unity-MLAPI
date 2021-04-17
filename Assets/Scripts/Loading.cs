@@ -1,17 +1,26 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using MLAPI;
+using MLAPI.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Loading : MonoBehaviour
+public class Loading : NetworkBehaviour
 {
 	public Slider bar;
+	
+	
 	void Start()
 	{
-		StartCoroutine(LoadYourAsyncScene());
+		if(IsServer)
+			NetworkSceneManager.SwitchScene("GamePlay");
+		else
+		{
+			if(!IsClient)
+				StartCoroutine(LoadYourAsyncScene());
+		}
 	}
-    
+	
 	IEnumerator  LoadYourAsyncScene()
 	{
 		AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("GamePlay");
@@ -22,4 +31,5 @@ public class Loading : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 		}
 	}
+	
 }

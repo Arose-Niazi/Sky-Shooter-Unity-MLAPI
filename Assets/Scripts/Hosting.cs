@@ -35,6 +35,13 @@ public class Hosting : NetworkBehaviour
         }
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void Play()
+    {
+        ConnectionHandle.AllowConnections = false;
+        NetworkSceneManager.SwitchScene("Loading");
+        
+    }
     
     
     [ServerRpc(RequireOwnership = false)]
