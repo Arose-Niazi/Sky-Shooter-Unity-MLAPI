@@ -25,17 +25,47 @@ public class PlayerScript : NetworkBehaviour
 	void Update()
 	{
 		if(IsClient && !IsOwner) return;
-		float inputX = Input.GetAxis("Horizontal");
-		float inputY = Input.GetAxis("Vertical");
+
+		float inputX;
+		float inputY;
 		
+		bool shoot;
+		
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER
+		inputX = Input.GetAxis("Horizontal");
+		inputY = Input.GetAxis("Vertical");
+		
+		shoot = Input.GetButtonDown("Fire1");
+		shoot |= Input.GetButtonDown("Fire2");
+#elif UNITY_IOS || UNITY_ANDROID		
+		
+		inputX = Input.GetAxis("Mouse X");
+		inputY = Input.GetAxis("Mouse Y");
+		shoot = false;
+		if (Input.touchCount > 0)
+		{
+			inputX = Input.touches[0].deltaPosition.x;
+			inputY = Input.touches[0].deltaPosition.y;
+		}
+		for (int i = 0; i < Input.touchCount; i++)
+		{
+			Touch touch = Input.GetTouch(i);
+
+			// -- Tap: quick touch & release
+			// ------------------------------------------------
+			if (touch.phase == TouchPhase.Ended && touch.tapCount == 1)
+			{
+				shoot = true;
+			}
+		}
+		inputX /= 4;
+		inputY /= 4;
+#endif
 		_movement = new Vector2(
 			speed.x * inputX,
 			speed.y * inputY);
 		
-		bool shoot = Input.GetButtonDown("Fire1");
-		shoot |= Input.GetButtonDown("Fire2");
-		// Careful: For Mac users, ctrl + arrow is a bad idea
-
+		
 		if (shoot)
 		{
 			
