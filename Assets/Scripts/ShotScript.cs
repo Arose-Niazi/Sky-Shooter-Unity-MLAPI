@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using MLAPI;
+using MLAPI.Messaging;
+using UnityEngine;
 
 /// <summary>
 /// Projectile behavior
 /// </summary>
 
 [RequireComponent (typeof(Rigidbody2D))]
-public class ShotScript : MonoBehaviour
+public class ShotScript : NetworkBehaviour
 {
 	// 1 - Designer variables
 
@@ -22,6 +24,16 @@ public class ShotScript : MonoBehaviour
 	void Start()
 	{
 		// 2 - Limited time to live to avoid any leak
-		Destroy(gameObject, 3); // 3sec
+		if (IsClient)
+			Invoke(nameof(DeleteServerRpc), 3);
+		else
+			Destroy(gameObject, 3); // 3sec
+
+	}
+
+	[ServerRpc]
+	private void DeleteServerRpc()
+	{
+		gameObject.GetComponent<NetworkObject>().Despawn(true);
 	}
 }

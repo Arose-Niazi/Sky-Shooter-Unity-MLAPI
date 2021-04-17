@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 5787663102201513808}
   - component: {fileID: 5787663102201513809}
   - component: {fileID: 1008602570321829406}
+  - component: {fileID: 7852972834284868541}
+  - component: {fileID: 456589943773722996}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -52,6 +54,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -193,3 +196,29 @@ MonoBehaviour:
   PrefabHashGenerator: Player
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
+--- !u!114 &7852972834284868541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5787663102201513814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da95e8176c83034895e30f79ef6f564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &456589943773722996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5787663102201513814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e418b8897cf8c499b9680aa6c925aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position:
+    m_InternalValue: {x: 0, y: 0, z: 0}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9201561095363883571}
   - component: {fileID: 4936146198865732573}
+  - component: {fileID: 7550588159499092612}
   m_Layer: 10
   m_Name: Weapon
   m_TagString: Untagged
@@ -46,6 +47,20 @@ MonoBehaviour:
   shotPrefab: {fileID: 3608163793746820342, guid: 5f72a197b91a83d4daaf286cee7c0176,
     type: 3}
   shootingRate: 1
+--- !u!114 &7550588159499092612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426754800085274593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e418b8897cf8c499b9680aa6c925aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position:
+    m_InternalValue: {x: 0, y: 0, z: 0}
 --- !u!1 &2937668125574798216
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +77,7 @@ GameObject:
   - component: {fileID: 2937668125574798222}
   - component: {fileID: 3303092225263170397}
   - component: {fileID: 4587057061805397167}
+  - component: {fileID: 4933431952733728445}
   m_Layer: 10
   m_Name: Poulpi Shooter
   m_TagString: Enemy
@@ -99,6 +115,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -238,3 +255,17 @@ MonoBehaviour:
   PrefabHashGenerator: Poulpi Shooter
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
+--- !u!114 &4933431952733728445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2937668125574798216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e418b8897cf8c499b9680aa6c925aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position:
+    m_InternalValue: {x: 0, y: 0, z: 0}

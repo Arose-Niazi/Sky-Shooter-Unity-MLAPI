@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8965529627575449184}
   - component: {fileID: 6931550471945267343}
+  - component: {fileID: 1582130847102864952}
   m_Layer: 10
   m_Name: Weapon 2
   m_TagString: Untagged
@@ -46,6 +47,20 @@ MonoBehaviour:
   shotPrefab: {fileID: 3608163793746820342, guid: 5f72a197b91a83d4daaf286cee7c0176,
     type: 3}
   shootingRate: 1
+--- !u!114 &1582130847102864952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4924922041619742410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e418b8897cf8c499b9680aa6c925aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position:
+    m_InternalValue: {x: 0, y: 0, z: 0}
 --- !u!1 &8205301379286767423
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +77,7 @@ GameObject:
   - component: {fileID: 8205301379286767417}
   - component: {fileID: 8416479322090307562}
   - component: {fileID: 5784099191668356771}
+  - component: {fileID: -263554777624900670}
   m_Layer: 10
   m_Name: Poulpi Multishooter
   m_TagString: Enemy
@@ -100,6 +116,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -239,6 +256,20 @@ MonoBehaviour:
   PrefabHashGenerator: Poulpi Multishooter
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
+--- !u!114 &-263554777624900670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8205301379286767423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e418b8897cf8c499b9680aa6c925aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position:
+    m_InternalValue: {x: 0, y: 0, z: 0}
 --- !u!1 &8698200319948489558
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2785798154711301764}
   - component: {fileID: 2133317993868816234}
+  - component: {fileID: 8187123466071244713}
   m_Layer: 10
   m_Name: Weapon
   m_TagString: Untagged
@@ -285,3 +317,17 @@ MonoBehaviour:
   shotPrefab: {fileID: 3608163793746820342, guid: 5f72a197b91a83d4daaf286cee7c0176,
     type: 3}
   shootingRate: 1
+--- !u!114 &8187123466071244713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8698200319948489558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e418b8897cf8c499b9680aa6c925aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position:
+    m_InternalValue: {x: 0, y: 0, z: 0}

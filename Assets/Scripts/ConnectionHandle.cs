@@ -20,6 +20,8 @@ public class ConnectionHandle : NetworkBehaviour
         {
             if(IsServer)
                 NetworkManager.StopHost();
+            if(IsClient)
+                NetworkManager.StopClient();
         }
     }
     
