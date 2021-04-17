@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using MLAPI;
+using UnityEngine;
 
 [RequireComponent (typeof(Rigidbody2D))]
 [RequireComponent (typeof(HealthScript))]
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : NetworkBehaviour
 {
 	public Vector2 speed = new Vector2(50, 50);
 
@@ -23,6 +24,7 @@ public class PlayerScript : MonoBehaviour
 
 	void Update()
 	{
+		if(IsClient && !IsOwner) return;
 		float inputX = Input.GetAxis("Horizontal");
 		float inputY = Input.GetAxis("Vertical");
 		

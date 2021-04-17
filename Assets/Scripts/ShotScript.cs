@@ -25,13 +25,13 @@ public class ShotScript : NetworkBehaviour
 	{
 		// 2 - Limited time to live to avoid any leak
 		if (IsClient)
-			Invoke(nameof(DeleteServerRpc), 3);
+			Invoke(nameof(DeleteServerRpc), 6);
 		else
 			Destroy(gameObject, 3); // 3sec
 
 	}
 
-	[ServerRpc]
+	[ServerRpc(RequireOwnership = false)]
 	private void DeleteServerRpc()
 	{
 		gameObject.GetComponent<NetworkObject>().Despawn(true);

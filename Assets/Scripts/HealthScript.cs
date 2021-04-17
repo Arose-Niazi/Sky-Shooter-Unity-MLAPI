@@ -49,7 +49,7 @@ public class HealthScript : NetworkBehaviour
 		}
 	}
 
-	[ServerRpc]
+	[ServerRpc(RequireOwnership = false)]
 	private void EffectServerRpc(Vector3 pos)
 	{
 		EffectClientRpc(pos);
@@ -62,7 +62,7 @@ public class HealthScript : NetworkBehaviour
 		SoundEffectsHelper.Instance.MakeExplosionSound();
 	}
 	
-	[ServerRpc]
+	[ServerRpc(RequireOwnership = false)]
 	private void DeleteServerRpc()
 	{
 		gameObject.GetComponent<NetworkObject>().Despawn(true);

@@ -10,7 +10,7 @@ public class WeaponScript : NetworkBehaviour
 	public Transform shotPrefab;
 	public float shootingRate = 0.25f;
 
-	private Transform shotTransform;
+	private Transform _shotTransform;
 	private float _shootCooldown;
 
 	void Start()
@@ -35,11 +35,11 @@ public class WeaponScript : NetworkBehaviour
 			// Create a new shot
 			if (!IsClient)
 			{
-				shotTransform = Instantiate(shotPrefab);
+				_shotTransform = Instantiate(shotPrefab,transform.position, shotPrefab.rotation);
 				CompleteShot(isEnemy);
 			}
-			else
-				CreateShotServerRpc(OwnerClientId,isEnemy);
+			else if(IsOwner)
+				CreateShotServerRpc(OwnerClientId,isEnemy, transform.position);
 
 			// Assign position
 			
@@ -48,28 +48,29 @@ public class WeaponScript : NetworkBehaviour
 	
 	public bool CanAttack => _shootCooldown <= 0f;
 
-	[ServerRpc]
-	private void CreateShotServerRpc(ulong clientID, bool isEnemy)
+	[ServerRpc(RequireOwnership = false)]
+	private void CreateShotServerRpc(ulong clientID, bool isEnemy, Vector3 pos)
 	{
 		Debug.Log($"[Server] CreateShot for {clientID}");
-		shotTransform = Instantiate(shotPrefab);
-		shotTransform.gameObject.GetComponent<NetworkObject>().SpawnWithOwnership(clientID,null, true);
+		_shotTransform = Instantiate(shotPrefab, pos, shotPrefab.rotation);
+		_shotTransform.gameObject.GetComponent<NetworkObject>().SpawnWithOwnership(clientID,null, true);
 		CompleteShot(isEnemy);
 	}
 
 	private void CompleteShot(bool isEnemy)
 	{
-		shotTransform.position = transform.position;
+		if(IsClient)
+			Debug.Log($"[Client] ShotComplete for {OwnerClientId}");
 
 		// The is enemy property
-		ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
+		ShotScript shot = _shotTransform.gameObject.GetComponent<ShotScript>();
 		if (shot != null)
 		{
 			shot.isEnemyShot = isEnemy;
 		}
 
 		// Make the weapon shot always towards it
-		DirectionMoveScript move = shotTransform.gameObject.GetComponent<DirectionMoveScript>();
+		DirectionMoveScript move = _shotTransform.gameObject.GetComponent<DirectionMoveScript>();
 		if (move != null)
 		{
 			move.direction = transform.right; // towards in 2D space is the right of the sprite
