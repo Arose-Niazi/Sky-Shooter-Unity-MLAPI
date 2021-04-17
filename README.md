@@ -28,6 +28,7 @@ This is incomplete, and I don't think I will be completeing it at all. As I used
 # Special Thanks 
 - To https://pixelnest.io/tutorials/2d-game-unity/ for basic game tutorial.
 - Dapper Dino https://www.youtube.com/c/DapperDinoCodingTutorials For his multiplayer videos used in this games are concepts from here (https://www.youtube.com/watch?v=6zBsPSww2u4&t=61s) and a lot of tries and source code reading.
+- Font: Paper Plane https://www.fontspace.com/paper-plane-font-f52245 (https://www.tigadestd.com/)
 
 # Game Play
 
