@@ -8,6 +8,8 @@ TagManager:
   - Shot
   - Enemy
   - SpawnPoints
+  - MainParentForSpawn
+  - MainScriptOfScene
   layers:
   - Default
   - TransparentFX

@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using MLAPI;
+using UnityEngine;
 
 /// <summary>
 /// Enemy generic behavior
 /// </summary>
-public class EnemyScript : MonoBehaviour
+public class EnemyScript : NetworkBehaviour
 {
     private bool _hasSpawn;
     private DirectionMoveScript _moveScript;
